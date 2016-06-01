@@ -88,7 +88,7 @@ map_t *map_next(rb_node_t *node) {
     return rb_entry(next, map_t, node);
 }
 
-void my_free(map_t *node){
+void map_free(map_t *node){
     if (node != NULL) {
         if (node->key != NULL) {
             free(node->key);

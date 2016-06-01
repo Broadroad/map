@@ -41,7 +41,7 @@ int main() {
 
     map_t *node;
     for (node = map_first(&tree); node; node=map_next(&(node->node))) {
-        printf("%s\n", node->val);
+        printf("%s\n", node->key);
     }
     return 0;
 }
