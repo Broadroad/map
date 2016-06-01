@@ -28,8 +28,8 @@ for (node = map_first(&tree); node; node=map_next(&(node->node))) {
 
 //Free map
 if (data) {
-		rb_erase(&data->node, &tree);
-		map_free(data);
+    rb_erase(&data->node, &tree);
+	map_free(data);
 }
 ````
 
