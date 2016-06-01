@@ -26,7 +26,7 @@ for (node = map_first(&tree); node; node=map_next(&(node->node))) {
 	printf("%s\n", node->val);
 }
 
-//Free map
+//Free map node
 if (data) {
     rb_erase(&data->node, &tree);
 	map_free(data);
