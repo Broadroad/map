@@ -56,6 +56,7 @@ int put(root_t *root, char* key, char* val) {
     strcpy(data->key, key);
     data->val = (char*)malloc(sizeof(val));
     strcpy(data->val, val);
+    
     rb_node_t **new_node = &(root->rb_node), *parent = NULL;
     while (*new_node) {
         map_t *this_node = container_of(*new_node, map_t, node);
@@ -65,7 +66,7 @@ int put(root_t *root, char* key, char* val) {
         if (result < 0) {
             new_node = &((*new_node)->rb_left);
         }else if (result > 0) {
-            new_node = &((*new_node)->rb_left);
+            new_node = &((*new_node)->rb_right);
         }else {
             return 0;
         }
@@ -75,6 +76,16 @@ int put(root_t *root, char* key, char* val) {
     rb_insert_color(&data->node, root);
 
     return 1;
+}
+
+map_t *map_first(root_t *tree) {
+    rb_node_t *node = rb_first(tree);
+    return (rb_entry(node, map_t, node));
+}
+
+map_t *map_next(rb_node_t *node) {
+    rb_node_t *next =  rb_next(node);
+    return rb_entry(next, map_t, node);
 }
 
 void my_free(map_t *node){

@@ -1,18 +1,17 @@
-/*
- * =============================================================================
- *
- *       Filename:  rbtree.h
- *
- *    Description:  rbtree(Red-Black tree) implementation adapted from linux
- *                  kernel thus can be used in userspace c program.
- *
- *        Created:  09/02/2012 11:36:11 PM
- *
- *         Author:  Fu Haiping (forhappy), haipingf@gmail.com
- *        Company:  ICT ( Institute Of Computing Technology, CAS )
- *
- * =============================================================================
- */
+/***************************************************************************
+ * 
+ * Copyright (c) 2016 zkdnfcf, Inc. All Rights Reserved
+ * $Id$ 
+ * 
+ **************************************************************************/
+ 
+ /**
+ * @file rbtree.h
+ * @author zk(tjbroadroad@163.com)
+ * @date 2016/05/31 17:52:32
+ * @version 0.1 
+ * @brief rbtree(Red-Black tree) implementation adapted from linux kernel, for others to use it in *        user space 
+ **/
 
 /*
   Red Black Trees
@@ -22,41 +21,33 @@
   it under the terms of the GNU General Public License as published by
   the Free Software Foundation; either version 2 of the License, or
   (at your option) any later version.
-
   This program is distributed in the hope that it will be useful,
   but WITHOUT ANY WARRANTY; without even the implied warranty of
   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
   GNU General Public License for more details.
-
   You should have received a copy of the GNU General Public License
   along with this program; if not, write to the Free Software
   Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
-
   linux/include/linux/rbtree.h
-
   To use rbtrees you'll have to implement your own insert and search cores.
   This will avoid us to use callbacks and to drop drammatically performances.
   I know it's not the cleaner way,  but in C (not in C++) to get
   performances and genericity...
-
   Some example of insert and search follows here. The search is a plain
   normal search over an ordered tree. The insert instead must be implemented
   in two steps: First, the code must insert the element in order as a red leaf
   in the tree, and then the support library function rb_insert_color() must
   be called. Such function will do the not trivial work to rebalance the
   rbtree, if necessary.
-
 -----------------------------------------------------------------------
 static inline struct page * rb_search_page_cache(struct inode * inode,
 						 unsigned long offset)
 {
 	struct rb_node * n = inode->i_rb_page_cache.rb_node;
 	struct page * page;
-
 	while (n)
 	{
 		page = rb_entry(n, struct page, rb_page_cache);
-
 		if (offset < page->offset)
 			n = n->rb_left;
 		else if (offset > page->offset)
@@ -67,6 +58,7 @@ static inline struct page * rb_search_page_cache(struct inode * inode,
 	return NULL;
 }
 
+
 static inline struct page * __rb_insert_page_cache(struct inode * inode,
 						   unsigned long offset,
 						   struct rb_node * node)
@@ -74,12 +66,10 @@ static inline struct page * __rb_insert_page_cache(struct inode * inode,
 	struct rb_node ** p = &inode->i_rb_page_cache.rb_node;
 	struct rb_node * parent = NULL;
 	struct page * page;
-
 	while (*p)
 	{
 		parent = *p;
 		page = rb_entry(parent, struct page, rb_page_cache);
-
 		if (offset < page->offset)
 			p = &(*p)->rb_left;
 		else if (offset > page->offset)
@@ -87,11 +77,10 @@ static inline struct page * __rb_insert_page_cache(struct inode * inode,
 		else
 			return page;
 	}
-
 	rb_link_node(node, parent, p);
-
 	return NULL;
 }
+
 
 static inline struct page * rb_insert_page_cache(struct inode * inode,
 						 unsigned long offset,
@@ -200,8 +189,8 @@ extern struct rb_node *rb_first(const struct rb_root *);
 extern struct rb_node *rb_last(const struct rb_root *);
 
 /* Fast replacement of a single node without remove/rebalance/add/rebalance */
-extern void rb_replace_node(struct rb_node *victim, struct rb_node *new, 
-			    struct rb_root *root);
+extern void rb_replace_node(struct rb_node *victim, struct rb_node *new,
+                            struct rb_root *root);
 
 static inline void rb_link_node(struct rb_node * node, struct rb_node * parent,
 				struct rb_node ** rb_link)
