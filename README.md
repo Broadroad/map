@@ -33,10 +33,10 @@ if (data) {
 }
 ````
 
-#Bug Reporting and Feature Requests
+# Bug Reporting and Feature Requests
 If you find a bug or have an enhancement request, simply file an Issue and send a message (via github messages) to the Committers to the project to let them know that you have filed an Issue.
 
-#Contact
+# Contact
 tjbroadroad@163.com
 
 
