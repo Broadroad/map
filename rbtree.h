@@ -1,18 +1,8 @@
 /***************************************************************************
  * 
- * Copyright (c) 2016 zkdnfcf, Inc. All Rights Reserved
- * $Id$ 
+ * Copyright (c) 2016 grab from kernel, Inc. All Rights Reserved
  * 
  **************************************************************************/
- 
- /**
- * @file rbtree.h
- * @author zk(tjbroadroad@163.com)
- * @date 2016/05/31 17:52:32
- * @version 0.1 
- * @brief rbtree(Red-Black tree) implementation adapted from linux kernel, for others to use it in *        user space 
- **/
-
 /*
   Red Black Trees
   (C) 1999  Andrea Arcangeli <andrea@suse.de>
