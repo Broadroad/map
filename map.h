@@ -52,9 +52,9 @@ map_t *get(root_t *root, char *str) {
 
 int put(root_t *root, char* key, char* val) {
     map_t *data = (map_t*)malloc(sizeof(map_t));
-    data->key = (char*)malloc(sizeof(key));
+    data->key = (char*)malloc((strlen(key)+1)*sizeof(char));
     strcpy(data->key, key);
-    data->val = (char*)malloc(sizeof(val));
+    data->val = (char*)malloc((strlen(val)+1)*sizeof(char));
     strcpy(data->val, val);
     
     rb_node_t **new_node = &(root->rb_node), *parent = NULL;
