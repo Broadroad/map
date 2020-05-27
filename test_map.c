@@ -43,6 +43,15 @@ int main() {
     for (node = map_first(&tree); node; node=map_next(&(node->node))) {
         printf("%s\n", node->key);
     }
+ 
+    // free map if you don't need
+    map_t *nodeFree = NULL;
+    for (nodeFree = map_first(&tree); nodeFree; nodeFree = map_first(&tree)) {
+        if (nodeFree) {
+            rb_erase(&nodeFree->node, &tree);
+            map_free(nodeFree);
+        }
+    }
     return 0;
 }
 
