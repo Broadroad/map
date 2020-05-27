@@ -68,6 +68,8 @@ int put(root_t *root, char* key, char* val) {
         }else if (result > 0) {
             new_node = &((*new_node)->rb_right);
         }else {
+            strcpy(this_node->val, val);
+            free(data);
             return 0;
         }
     }

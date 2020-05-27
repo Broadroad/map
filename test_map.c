@@ -26,16 +26,17 @@ int main() {
     char *word = "world";
     put(&tree, key, word);
 
-    char *key1 = "zhang1";
-    char *word1 = "world1";
+    char *key1 = "hello 1";
+    char *word1 = "world 1";
     put(&tree, key1, word1);
 
 
-    char *key2 = "zhang2";
-    char *word2 = "world2";
+    char *key2 = "hello 1";
+    char *word2 = "world 2 change";
     put(&tree, key2, word2);
 
-    map_t *data1 = get(&tree, "zhang1");
+    map_t *data1 = get(&tree, "hello 1");
+
     if (data1 != NULL)
         printf("%s\n", data1->val);
 
